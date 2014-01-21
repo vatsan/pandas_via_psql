@@ -23,7 +23,7 @@ home$ psql -d vatsandb -h dca -U gpadmin -c 'select * from wine;' | python plott
 ```
 
 Here is the output ![Scatter Matrix of all features from the Wine Quality Dataset]
-(https://raw2.github.com/vatsan/pandas_via_psql/master/plots/scatter.png)
+(https://raw2.github.com/vatsan/pandas_via_psql/master/plots/scatter_matrix.png)
 
 Histogram Plot
 ==============
