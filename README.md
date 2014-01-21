@@ -1,6 +1,6 @@
 PSQL + Pandas Awesomeness
 ==========================
-(Pandas)[http://pandas.pydata.org/] is a popular library in Python that is commonly used for data analysis and it provides Python equivalent of the R dataframe that is fundamental to data analysis. Some engineers and data scientists however are increasingly adopting SQL based libraries for building large scale machine learning algorithms. (MADlib)(http://madlib.net) is one such library for scalable, parallel, in-database machine learning.
+[Pandas](http://pandas.pydata.org/) is a popular library in Python that is commonly used for data analysis and it provides Python equivalent of the R dataframe that is fundamental to data analysis. Some engineers and data scientists however are increasingly adopting SQL based libraries for building large scale machine learning algorithms. [MADlib](http://madlib.net) is one such library for scalable, parallel, in-database machine learning.
 
 While there exist commercial tools to visualize data that is resides on databases (example: Tableau), many a times it would be cool to be able to quickly visualize the output of a SQL query, without having to switch to a commercial tool or have to use a wrapper to a SQL engine. The pandas_via_psql project just demonstrates how simple it is to redirect the output of a SQL query to some boilerplate Pandas's plotting functions, to quickly visualize the data from the command line.
 
