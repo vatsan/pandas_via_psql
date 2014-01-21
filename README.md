@@ -11,8 +11,7 @@ You'll need Pandas to be installed on your machine. You should also have (PSQL)[
 Datasets Used
 ==============
 For this demo, I'm using two publicly available datasets. 
-* [The UCI wine quality dataset](http://archive.ics.uci.edu/ml/datasets/Wine+Quality).
-Here is how this dataset looks like:
+* [The UCI wine quality dataset](http://archive.ics.uci.edu/ml/datasets/Wine+Quality) - Here is a sampling of rows from this dataset:
 
 ```
 alcohol | mmalic_acid | ash  | alcalinity_of_ash | magnesium | total_phenols | flavanoids | nonflavanoid_phenols | proanthocyanins | color_intensity |  hue  | od280 | proline | quality 
@@ -36,8 +35,7 @@ alcohol | mmalic_acid | ash  | alcalinity_of_ash | magnesium | total_phenols | f
 
 ```
 
-* [The S&P daily prices dataset](http://finance.yahoo.com/q/hp?s=%5EGSPC+Historical+Prices).
-Here is how this dataset looks like:
+* [The S&P daily prices dataset](http://finance.yahoo.com/q/hp?s=%5EGSPC+Historical+Prices) - Here is a sampling of rows from this dataset:
 
 ```
      dt     |  open   |  high   |   low   |  close  |   volume   | adj_close 
