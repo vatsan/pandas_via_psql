@@ -22,8 +22,8 @@ Here is how the scatter matrix can be created on the UCI Wine Quality Dataset
 home$ psql -d vatsandb -h dca -U gpadmin -c 'select * from wine;' | python plotter.py scatter
 ```
 
-Here is the output [Scatter Matrix of all features from the Wine Quality Dataset]
-(https://github.com/vatsan/pandas_via_psql/blob/master/plots/scatter_matrix.png)
+Here is the output ![Scatter Matrix of all features from the Wine Quality Dataset]
+(https://raw2.github.com/vatsan/pandas_via_psql/master/plots/scatter.png)
 
 Histogram Plot
 ==============
@@ -33,7 +33,7 @@ Histogram Plot
 home$ psql -d vatsandb -h dca -U gpadmin -c 'select ash, flavanoids, hue, proline from wine;' | python plotter.py hist
 ```
 
-Here is the output ![Histogram Plots of some features from the Wine Quality Dataset](https://github.com/vatsan/pandas_via_psql/blob/master/plots/histogram.png)
+Here is the output ![Histogram Plots of some features from the Wine Quality Dataset](https://raw2.github.com/vatsan/pandas_via_psql/master/plots/histogram.png)
 
 
 Box Plot
@@ -44,7 +44,7 @@ Box Plot
 home$ psql -d vatsandb -h dca -U gpadmin -c 'select ash, flavanoids, hue, proline from wine;' | python plotter.py box
 ```
 
-Here is the output ![Box Plot of some features from the Wine Quality Dataset](https://github.com/vatsan/pandas_via_psql/blob/master/plots/boxplot.png)
+Here is the output ![Box Plot of some features from the Wine Quality Dataset](https://raw2.github.com/vatsan/pandas_via_psql/master/plots/boxplot.png)
 
 
 Time Series Plot
@@ -54,4 +54,4 @@ Time Series Plot
 home$ psql -d vatsandb -h dca -U gpadmin -c 'select dt, high, low  from sandp_prices where dt > 1998 order by dt;' | python plotter.py tseries
 ```
 
-Here is the output ![Time Series Plotting of S&P](https://github.com/vatsan/pandas_via_psql/blob/master/plots/time_series.png)
+Here is the output ![Time Series Plotting of S&P](https://raw2.github.com/vatsan/pandas_via_psql/master/plots/time_series.png)
