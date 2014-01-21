@@ -6,7 +6,9 @@ While there exist commercial tools to visualize data that is resides on database
 
 Pre-Requsites
 ==============
-You'll need Pandas to be installed on your machine. You should also have (PSQL)[http://www.postgresql.org/docs/8.1/static/app-psql.html] or a similar SQL command line interface to connect to your database and also ensure that you have password-less access to your remote database (set up SSH keys appropriately).
+You'll need Pandas to be installed on your machine. You should also have [PSQL](http://www.postgresql.org/docs/8.1/static/app-psql.html) or a similar SQL command line interface to connect to your database and also ensure that you have password-less access to your remote database (set up SSH keys appropriately).
+
+I recommend you download [Anaconda Python](https://store.continuum.io/cshop/anaconda/) from the nice folks at [Continuum Analytics](http://continuum.io/). It's got most of the essential Python scientific computing libraries pre-packaged and with `conda` you can save a lot of pain in installing python libraries.
 
 Datasets Used
 ==============
