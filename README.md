@@ -106,3 +106,8 @@ Again, Pandas has an impressive collection of functions for time series analysis
 home$ psql -d vatsandb -h dca -U gpadmin -c 'select dt, high, low  from sandp_prices where dt > 1998 order by dt;' | python plotter.py tseries
 ```
 Here is the output ![Time Series Plotting of S&P](https://raw2.github.com/vatsan/pandas_via_psql/master/plots/time_series.png)
+
+Feedback
+=========
+
+Please email questions/comments to vatsan.cs@utexas.edu
