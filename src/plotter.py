@@ -79,7 +79,7 @@ def readTableFromPipe(plot_type):
 if(__name__ == '__main__'):
     from sys import argv
     if(len(argv)!=2):
-        print 'Usage: python plotter.py <hist|box|scatter>'
+        print 'Usage: python plotter.py <hist|box|scatter|tseries>'
     else:
         plot_type = argv[1]
         #Remove arguments list from Argv (else fileinput will cry).
