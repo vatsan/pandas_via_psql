@@ -12,7 +12,7 @@ Examples:
 2) home$ psql -d vatsandb -h dca -U gpadmin -c 'select ash, flavanoids, hue, proline from wine;' | python plotter.py box
 3) home$ psql -d vatsandb -h dca -U gpadmin -c 'select ash, flavanoids, hue, proline from wine;' | python plotter.py hist
 4) home$ psql -d vatsandb -h dca -U gpadmin -c 'select dt, high, low  from sandp_prices where dt > 1998 order by dt;' | python plotter.py tseries
-5) home$ psql -d vatsandb -h dca -U gpadmin -c 'select random() as x, random() as y from generate_series(1,1000);' | python plotter.py density
+5) home$ psql -d vatsandb -h dca -U gpadmin -c 'select ash, flavanoids, hue, proline from wine;' | python plotter.py density
 ============================================================================================================================
 '''
 
