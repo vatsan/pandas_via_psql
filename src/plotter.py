@@ -12,6 +12,7 @@ Examples:
 2) home$ psql -d vatsandb -h dca -U gpadmin -c 'select ash, flavanoids, hue, proline from wine;' | python plotter.py box
 3) home$ psql -d vatsandb -h dca -U gpadmin -c 'select ash, flavanoids, hue, proline from wine;' | python plotter.py hist
 4) home$ psql -d vatsandb -h dca -U gpadmin -c 'select dt, high, low  from sandp_prices where dt > 1998 order by dt;' | python plotter.py tseries
+5) home$ psql -d vatsandb -h dca -U gpadmin -c 'select random() as x, random() as y from generate_series(1,1000);' | python plotter.py density
 ============================================================================================================================
 '''
 
@@ -44,7 +45,10 @@ def histogramPlot(dframe):
     '''
        Show histogram of various fields
     '''
-    hist_plot = dframe.hist(figsize=(6, 6))
+    if(len(dframe.columns)>1):
+        hist_plot = dframe.hist(figsize=(6, 6))
+    else:
+        hist_plot = dframe.hist()
     plt.show()
     
 def timeSeriesPlot(dframe):
@@ -53,6 +57,16 @@ def timeSeriesPlot(dframe):
     '''
     #The first column should be a date column and that will used as an index.
     dframe.set_index(dframe.columns[0]).plot()
+    plt.show()
+
+def densityPlot(dframe):
+    '''
+       Show Kernel Density Plots
+    '''
+    if(len(dframe.columns)>1):
+        hist_plot = dframe.plot(kind='kde',linewidth=3, figsize=(6, 6))
+    else:
+        hist_plot = dframe.hist(kind='kde',linewidth=3)
     plt.show()
 
 def readTableFromPipe(plot_type):
@@ -75,11 +89,13 @@ def readTableFromPipe(plot_type):
         histogramPlot(dframe)
     elif(plot_type=='tseries'):
         timeSeriesPlot(dframe)
+    elif(plot_type=='density'):
+        densityPlot(dframe)
     
 if(__name__ == '__main__'):
     from sys import argv
     if(len(argv)!=2):
-        print 'Usage: python plotter.py <hist|box|scatter>'
+        print 'Usage: python plotter.py <hist|box|scatter|tseries|density>'
     else:
         plot_type = argv[1]
         #Remove arguments list from Argv (else fileinput will cry).
