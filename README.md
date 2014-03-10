@@ -91,6 +91,16 @@ home$ psql -d vatsandb -h dca -U gpadmin -c 'select ash, flavanoids, hue, prolin
 ```
 Here is the output ![Histogram Plots of some features from the Wine Quality Dataset](https://raw2.github.com/vatsan/pandas_via_psql/master/plots/histogram.png)
 
+Density Plot
+=============
+In place of binning your data, you might consider plotting the density directly. 
+
+You could invoke it from your command line like so:
+```
+home$ psql -d vatsandb -h dca -U gpadmin -c 'select ash, flavanoids, hue, proline from wine;' | python plotter.py density
+```
+Here is the output ![Density Plots of some features from the Wine Quality Dataset](https://raw.github.com/vatsan/pandas_via_psql/master/plots/density.png)
+
 Box Plot
 =========
 Box plots are useful in visually getting a feel for the quartile ranges of numerical columns in your dataset. You could invoke it from your command line like so:
@@ -107,6 +117,8 @@ Again, Pandas has an impressive collection of functions for time series analysis
 home$ psql -d vatsandb -h dca -U gpadmin -c 'select dt, high, low  from sandp_prices where dt > 1998 order by dt;' | python plotter.py tseries
 ```
 Here is the output ![Time Series Plotting of S&P](https://raw2.github.com/vatsan/pandas_via_psql/master/plots/time_series.png)
+
+
 
 Feedback
 =========
