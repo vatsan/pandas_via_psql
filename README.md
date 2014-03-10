@@ -81,6 +81,20 @@ home$ psql -d vatsandb -h dca -U gpadmin -c 'select * from wine;' | python plott
 Here is the output ![Scatter Matrix of all features from the Wine Quality Dataset]
 (https://raw2.github.com/vatsan/pandas_via_psql/master/plots/scatter_matrix.png)
 
+
+Hexbin Plots
+=============
+Scatter plots sometimes may not reveal the underlying relationship between the dimensions when multiple points overlap.
+For this reason, it is better to look at a 2-d histogram or a hex-bin plot. We can tap into `matplotlib's` hexbin plot for this.
+
+You could invoke it from your command line like so:
+```
+home$ psql -d vatsandb -h dca -U gpadmin -c 'select ash, flavanoids from wine;' | python plotter.py hexbin
+```
+Here is the output ![Hexbin plot of Ash vs. Flavanoids from Wine Quality Dataset]
+(https://raw2.github.com/vatsan/pandas_via_psql/master/plots/hexbin.png)
+
+
 Histogram Plot
 ==============
 To get a quick glimpse of the distribution of the data in your columns, a histogram plot of all columns is quite useful.

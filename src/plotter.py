@@ -5,7 +5,7 @@ Srivatsan Ramanujam <vatsan.cs@utexas.edu>
 ============================================================================================================================
 Usage:
 =========
-Syntax: python plotter.py <hist|box|scatter>
+Syntax: python plotter.py <hist|box|scatter|tseries|density|hexbin>
 Examples:
 =========
 1) home$ psql -d vatsandb -h dca -U gpadmin -c 'select * from wine;' | python plotter.py scatter
@@ -13,6 +13,7 @@ Examples:
 3) home$ psql -d vatsandb -h dca -U gpadmin -c 'select ash, flavanoids, hue, proline from wine;' | python plotter.py hist
 4) home$ psql -d vatsandb -h dca -U gpadmin -c 'select dt, high, low  from sandp_prices where dt > 1998 order by dt;' | python plotter.py tseries
 5) home$ psql -d vatsandb -h dca -U gpadmin -c 'select ash, flavanoids, hue, proline from wine;' | python plotter.py density
+6) home$ psql -d vatsandb -h dca -U gpadmin -c 'select ash, flavanoids from wine;' | python plotter.py hexbin
 ============================================================================================================================
 '''
 
@@ -32,6 +33,19 @@ def scatterMatrix(dframe):
     #Rename columns so that the plot if not very cluttered.
     df.columns = range(len(df.columns))
     smatrix = scatter_matrix(df, alpha=0.2, figsize=(6, 6), diagonal='kde')
+    plt.show()
+    
+def hexbinPlot(dframe):
+    '''
+       Show 2-d hexbin plot
+    '''
+    x_label, y_label=dframe.columns[0],dframe.columns[1]
+    x, y = dframe[x_label],dframe[y_label]
+    hexbinplt = plt.hexbin(x,y,gridsize=30)
+    cbar = plt.colorbar()
+    cbar.set_label('count')
+    plt.xlabel(x_label)
+    plt.ylabel(y_label)
     plt.show()
     
 def boxPlot(dframe):
@@ -91,11 +105,13 @@ def readTableFromPipe(plot_type):
         timeSeriesPlot(dframe)
     elif(plot_type=='density'):
         densityPlot(dframe)
+    elif(plot_type=='hexbin'):
+        hexbinPlot(dframe)
     
 if(__name__ == '__main__'):
     from sys import argv
     if(len(argv)!=2):
-        print 'Usage: python plotter.py <hist|box|scatter|tseries|density>'
+        print 'Usage: python plotter.py <hist|box|scatter|tseries|density|hexbin>'
     else:
         plot_type = argv[1]
         #Remove arguments list from Argv (else fileinput will cry).
