@@ -80,7 +80,7 @@ def densityPlot(dframe):
     if(len(dframe.columns)>1):
         hist_plot = dframe.plot(kind='kde',linewidth=3, figsize=(6, 6))
     else:
-        hist_plot = dframe.hist(kind='kde',linewidth=3)
+        hist_plot = dframe.plot(kind='kde',linewidth=3)
     plt.show()
 
 def readTableFromPipe(plot_type):
