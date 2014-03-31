@@ -89,10 +89,11 @@ def readTableFromPipe(plot_type):
     '''
     rows_pattern = re.compile(r'^\(\d+ rows\)$')
     underline_pattern = re.compile(r'^(-+\+-+)+$')
+    single_underline_pattern = re.compile(r'^(-)+$')
     data =[]
     for line in fileinput.input():
         #Skip lines not representing header or data
-        if(line.strip() and not rows_pattern.match(line) and not underline_pattern.match(line)):
+        if(line.strip() and not rows_pattern.match(line) and not underline_pattern.match(line) and not single_underline_pattern.match(line)):
             data.append(re.sub('\s+','',line))
     dframe = pd.read_csv(StringIO('\n'.join(data)), sep='|', index_col=False)
     if(plot_type=='scatter'):
