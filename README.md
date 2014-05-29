@@ -132,6 +132,9 @@ home$ psql -d vatsandb -h dca -U gpadmin -c 'select dt, high, low  from sandp_pr
 ```
 Here is the output ![Time Series Plotting of S&P](https://raw2.github.com/vatsan/pandas_via_psql/master/plots/time_series.png)
 
+RGB Image Rendering
+===================
+Placeholder for Ailey's stuff
 
 
 Feedback
