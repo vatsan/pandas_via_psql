@@ -135,10 +135,10 @@ Here is the output ![Time Series Plotting of S&P](https://raw2.github.com/vatsan
 
 Image Rendering
 ===================
-Pandas also has a great set of tools for viewing images: grayscale or RGB.
-To view an image, simply select the height and width of the image (number of rows & columns) followed by a vector of intensity values ordered by row, then column. You can run the following from your command line to view a 14x14 grayscale image:
+Pandas also has a great set of tools for viewing images: grayscale or RGB, which can be quite handy when working on image processing or computer vision in SQL. For example, to check a binary mask after thresholding or the weights output by a deep learning algorithm, it is much easier to visualize an image than to interpret a table of intensity values.
+To view an image whose intensity values are stored in a table, simply select the height and width of the image (number of rows & columns) followed by a vector of intensity values ordered by row, then column. For example, to view this 270x360 pixel grayscale image, you can run the following from your command line:
 ```
-home$ psql -d vatsandb -h dca -U gpadmin -c 'select 14 as r, 14 as c, intensity_values from sample_image;' | python plotter.py image
+home$ psql -d vatsandb -h dca -U gpadmin -c 'select 270 as rows, 360 as cols, intensity_values from sample_image;' | python plotter.py image
 ```
 Here is the output 
 ![Sample Grayscale image](https://raw.githubusercontent.com/ailey/pandas_via_psql/master/plots/YosemiteGrayscale.jpg)
