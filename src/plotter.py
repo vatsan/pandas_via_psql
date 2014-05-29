@@ -82,7 +82,47 @@ def densityPlot(dframe):
     else:
         hist_plot = dframe.plot(kind='kde',linewidth=3)
     plt.show()
+    
+def imgPlot(dframe):
+    '''
+       Show Image
+    '''
+    if(len(dframe.columns)>1):
+        r = int(dframe.iloc[0][0])
+        c = int(dframe.iloc[0][1])
+        patch = dframe.iloc[0][2]
+        patch = patch.replace('{','');
+        patch = patch.replace('}','');
+        str_pixels = patch.split(',');
+        pixels = np.array(map(float, str_pixels));
+        pixels = pixels.reshape(r,c)
+        pixels = np.flipud(pixels)
+        plt.imshow(pixels,cmap = cm.Greys_r)
+    else:
+        print 'Usage: for image plot, 3 columns are expected, with the first two columns being the number of rows and number of columns that make up the image and the third column being the actual image pixelsa as a vector'
+    plt.show()
 
+def imgRGBPlot(dframe):
+    '''
+       Show RGB Image
+    '''
+    if(len(dframe.columns)>1):
+        r = int(dframe.iloc[0][0])
+        c = int(dframe.iloc[0][1])
+        patch = dframe.iloc[0][2]
+        patch = patch.replace('{','');
+        patch = patch.replace('}','');
+        str_pixels = patch.split(',');
+        pixels = np.array(map(float, str_pixels));
+        im = np.reshape(pixels, (-1,3)) # reshape
+        im = np.dstack((np.reshape([np.uint8(float(i)) for i in pixels[0:r*c]], (r,c)),
+                np.reshape([np.uint8(float(i)) for i in pixels[r*c:2*r*c]], (r,c)),
+                np.reshape([np.uint8(float(i)) for i in pixels[2*r*c:3*r*c]], (r,c))))
+        plt.imshow(im)
+    else:
+        print 'Usage: for image plot, 3 columns are expected, with the first two columns being the number of rows and number of columns that make up the image and the third column being the actual image pixelsa with R,G,& B values listed sequentially	as a vector'
+    plt.show()
+    
 def readTableFromPipe(plot_type):
     '''
        Read the output of a SQL query from a pipe and display a scatter plot
@@ -108,7 +148,11 @@ def readTableFromPipe(plot_type):
         densityPlot(dframe)
     elif(plot_type=='hexbin'):
         hexbinPlot(dframe)
-    
+    elif(plot_type=='image'):
+    	imgPlot(dframe)
+    elif(plot_type=='imageRGB'):
+    	imgRGBPlot(dframe)
+        
 if(__name__ == '__main__'):
     from sys import argv
     if(len(argv)!=2):
