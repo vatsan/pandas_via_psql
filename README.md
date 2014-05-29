@@ -103,7 +103,8 @@ You could invoke it from your command line like so:
 ```
 home$ psql -d vatsandb -h dca -U gpadmin -c 'select ash, flavanoids, hue, proline from wine;' | python plotter.py hist
 ```
-Here is the output ![Histogram Plots of some features from the Wine Quality Dataset](https://raw2.github.com/vatsan/pandas_via_psql/master/plots/histogram.png)
+Here is the output 
+![Histogram Plots of some features from the Wine Quality Dataset](https://raw2.github.com/vatsan/pandas_via_psql/master/plots/histogram.png)
 
 Density Plot
 =============
@@ -132,7 +133,22 @@ home$ psql -d vatsandb -h dca -U gpadmin -c 'select dt, high, low  from sandp_pr
 ```
 Here is the output ![Time Series Plotting of S&P](https://raw2.github.com/vatsan/pandas_via_psql/master/plots/time_series.png)
 
+Image Rendering
+===================
+Pandas also has a great set of tools for viewing images: grayscale or RGB.
+To view an image, simply select the height and width of the image (number of rows & columns) followed by a vector of intensity values ordered by row, then column. You can run the following from your command line to view a 14x14 grayscale image:
+```
+home$ psql -d vatsandb -h dca -U gpadmin -c 'select 14 as r, 14 as c, intensity_values from sample_image;' | python plotter.py image
+```
+Here is the output 
+![Sample Grayscale image](https://raw.githubusercontent.com/ailey/pandas_via_psql/master/plots/YosemiteGrayscale.jpg)
 
+Similarly, to view an RGB image, provide the image height and width followed by a vector of intensity values ordered by row, then column, then color. To view a sample RGB image you can run the following from your command line:
+```
+home$ psql -d vatsandb -h dca -U gpadmin -c 'select max(row)+1, max(col)+1, array[array_agg(red_intensity order by row,col), array_agg(green_intensity order by row,col), array_agg(blue_intensity order by row,col)] from (select * from sample_RGB_image order by row,col)t;' | python plotter.py imageRGB
+```
+Here is the output 
+![Sample RGB image](https://raw.githubusercontent.com/ailey/pandas_via_psql/master/plots/YosemiteRGB.jpeg)
 
 Feedback
 =========
