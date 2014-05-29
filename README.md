@@ -151,13 +151,13 @@ Here is the output
 ![Sample RGB image](https://raw.githubusercontent.com/ailey/pandas_via_psql/master/plots/YosemiteRGB.jpeg)
 
 
+Author
+=======
+
+Please email questions and feedback to [Srivatsan Ramanujam](https://github.com/vatsan/) at vatsan.cs@utexas.edu
+
 Contributors
 ==============
 
 Thanks to [Ailey Crow](https://github.com/ailey) and [Gautam Muralidhar](https://github.com/gautamsm) for their contributions.
 
-
-Feedback
-=========
-
-Please email questions/comments to vatsan.cs@utexas.edu
