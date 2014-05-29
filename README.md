@@ -150,6 +150,13 @@ home$ psql -d vatsandb -h dca -U gpadmin -c 'select max(row)+1, max(col)+1, arra
 Here is the output 
 ![Sample RGB image](https://raw.githubusercontent.com/ailey/pandas_via_psql/master/plots/YosemiteRGB.jpeg)
 
+
+Contributors
+==============
+
+Thanks to [Ailey Crow](https://github.com/ailey) and [Gautam Muralidhar](https://github.com/gautamsm) for their contributions.
+
+
 Feedback
 =========
 
