@@ -1,7 +1,7 @@
 GitHub Page
 ============
 
-Please visit (Pandas-via-psql Website)[http://vatsan.github.io/pandas_via_psql/] for a complete tutorial.
+Please visit [Pandas-via-psql Website](http://vatsan.github.io/pandas_via_psql/) for a complete tutorial.
 
 PSQL + Pandas Awesomeness
 ==========================
