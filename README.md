@@ -1,19 +1,34 @@
 GitHub Page
 ============
 
-Please visit [Pandas-via-psql Website](http://vatsan.github.io/pandas_via_psql/) for a complete tutorial.
+Pandas-via-psql (ppsqlviz) is a command line visualization utility for SQL using Pandas library in Python.
+Please visit the GitHub page [ppsqlviz](http://vatsan.github.io/pandas_via_psql/) for a complete tutorial.
 
 PSQL + Pandas Awesomeness
 ==========================
+
 [Pandas](http://pandas.pydata.org/) is a popular library in Python that is commonly used for data analysis and it provides Python equivalent of the R dataframe that is fundamental to data analysis. Some engineers and data scientists however are increasingly adopting SQL based libraries for building large scale machine learning algorithms. [MADlib](http://madlib.net) is one such library for scalable, parallel, in-database machine learning.
 
-While there are commercial tools to visualize data that reside in databases (example: Tableau), many a times it would be cool and convenient to be able to quickly visualize the output of a SQL query, without having to switch to a commercial tool or have to use a wrapper to a SQL engine. The pandas_via_psql project just demonstrates how simple it is to redirect the output of a SQL query to some boilerplate Pandas's plotting functions, to quickly visualize the data from the command line.
+While there are commercial tools to visualize data that reside in databases (example: Tableau), often what's missing in a Big Data scientist's arsenal is a command line tool to be able to quickly visualize the output of a SQL query, without having to switch to a commercial tool or have to use a wrapper to a SQL engine. The pandas_via_psql (ppsqlviz) will show you how simple it is to redirect the output of a SQL query to some boilerplate Pandas's plotting functions, to quickly visualize the data from the command line.
 
 Pre-Requsites
 ==============
-You'll need Pandas to be installed on your machine. You should also have [PSQL](http://www.postgresql.org/docs/8.1/static/app-psql.html) or a similar SQL command line interface to connect to your database and also ensure that you have password-less access to your remote database (set up SSH keys appropriately).
+
+ppsqlviz depends on the Pandas python library. You should also have [PSQL](http://www.postgresql.org/docs/8.1/static/app-psql.html) or a similar SQL command line interface to connect to your database and also ensure that you have password-less access to your remote database (set up SSH keys appropriately).
 
 I recommend you download [Anaconda Python](https://store.continuum.io/cshop/anaconda/) from the nice folks at [Continuum Analytics](http://continuum.io/). It's got most of the essential Python scientific computing libraries pre-packaged and with [conda](http://bokeh.pydata.org/) you can save a lot of pain in installing python libraries. It also makes creating and managing virtual environments a piece of cake!
+
+Installation
+=============
+
+You can install install ppsqlviz through pip
+
+```
+pip install ppsqlviz
+```
+
+This will install the dependent library (Pandas) if you don't already have that. I strongly encourage you use Anaconda Python to avoid going down the rabbit hole of PyData stack dependency nightmares.
+
 
 Datasets Used
 ==============
@@ -81,7 +96,7 @@ This is pretty useful when you are interested in analyzing the correlation betwe
 
 Here is how the scatter matrix can be created on the UCI Wine Quality Dataset
 ```
-home$ psql -d vatsandb -h dca -U gpadmin -c 'select * from wine;' | python plotter.py scatter
+home$ psql -d vatsandb -h dca -U gpadmin -c 'select * from wine;' | python -m 'ppsqlviz.plotter' scatter
 ```
 Here is the output ![Scatter Matrix of all features from the Wine Quality Dataset]
 (https://raw2.github.com/vatsan/pandas_via_psql/master/plots/scatter_matrix.png)
@@ -94,7 +109,7 @@ For this reason, it is better to look at a 2-d histogram or a hex-bin plot. We c
 
 You could invoke it from your command line like so:
 ```
-home$ psql -d vatsandb -h dca -U gpadmin -c 'select ash, flavanoids from wine;' | python plotter.py hexbin
+home$ psql -d vatsandb -h dca -U gpadmin -c 'select ash, flavanoids from wine;' | python -m 'ppsqlviz.plotter' hexbin
 ```
 Here is the output ![Hexbin plot of Ash vs. Flavanoids from Wine Quality Dataset]
 (https://raw2.github.com/vatsan/pandas_via_psql/master/plots/hexbin.png)
@@ -106,7 +121,7 @@ To get a quick glimpse of the distribution of the data in your columns, a histog
 
 You could invoke it from your command line like so:
 ```
-home$ psql -d vatsandb -h dca -U gpadmin -c 'select ash, flavanoids, hue, proline from wine;' | python plotter.py hist
+home$ psql -d vatsandb -h dca -U gpadmin -c 'select ash, flavanoids, hue, proline from wine;' | python -m 'ppsqlviz.plotter' hist
 ```
 Here is the output 
 ![Histogram Plots of some features from the Wine Quality Dataset](https://raw2.github.com/vatsan/pandas_via_psql/master/plots/histogram.png)
@@ -117,7 +132,7 @@ In place of binning your data, you might consider plotting the density directly.
 
 You could invoke it from your command line like so:
 ```
-home$ psql -d vatsandb -h dca -U gpadmin -c 'select ash, flavanoids, hue, proline from wine;' | python plotter.py density
+home$ psql -d vatsandb -h dca -U gpadmin -c 'select ash, flavanoids, hue, proline from wine;' | python -m 'ppsqlviz.plotter' density
 ```
 Here is the output ![Density Plots of some features from the Wine Quality Dataset](https://raw.github.com/vatsan/pandas_via_psql/master/plots/density.png)
 
@@ -126,7 +141,7 @@ Box Plot
 Box plots are useful in visually getting a feel for the quartile ranges of numerical columns in your dataset. You could invoke it from your command line like so:
 
 ```
-home$ psql -d vatsandb -h dca -U gpadmin -c 'select ash, flavanoids, hue, proline from wine;' | python plotter.py box
+home$ psql -d vatsandb -h dca -U gpadmin -c 'select ash, flavanoids, hue, proline from wine;' | python -m 'ppsqlviz.plotter' box
 ```
 Here is the output ![Box Plot of some features from the Wine Quality Dataset](https://raw2.github.com/vatsan/pandas_via_psql/master/plots/boxplot.png)
 
@@ -134,7 +149,7 @@ Time Series Plot
 =================
 Again, Pandas has an impressive collection of functions for time series analysis but to quickly visualize a time series, you can run the following from your command line:
 ```
-home$ psql -d vatsandb -h dca -U gpadmin -c 'select dt, high, low  from sandp_prices where dt > 1998 order by dt;' | python plotter.py tseries
+home$ psql -d vatsandb -h dca -U gpadmin -c 'select dt, high, low  from sandp_prices where dt > 1998 order by dt;' | python -m 'ppsqlviz.plotter' tseries
 ```
 Here is the output ![Time Series Plotting of S&P](https://raw2.github.com/vatsan/pandas_via_psql/master/plots/time_series.png)
 
@@ -143,13 +158,13 @@ Image Rendering
 Pandas also has a great set of tools for viewing images: grayscale or RGB, which can be quite handy when working on image processing or computer vision in SQL. For example, to check a binary mask after thresholding or the weights output by a deep learning algorithm, it is much easier to visualize an image than to interpret a table of intensity values.
 To view an image whose intensity values are stored in a table, simply select the height and width of the image (number of rows & columns) followed by a vector of intensity values ordered by row, then column. For example, to view this 270x360 pixel grayscale image, you can run the following from your command line:
 ```
-home$ psql -d vatsandb -h dca -U gpadmin -c 'select 270 as rows, 360 as cols, intensity_values from sample_image;' | python plotter.py image
+home$ psql -d vatsandb -h dca -U gpadmin -c 'select 270 as rows, 360 as cols, intensity_values from sample_image;' | python -m 'ppsqlviz.plotter' image
 ```
 Here is the output ![Sample Grayscale image](https://raw.githubusercontent.com/ailey/pandas_via_psql/master/plots/YosemiteGrayscale.jpg)
 
 Similarly, to view an RGB image, provide the image height and width followed by a vector of intensity values ordered by row, then column, then color. To view a sample RGB image you can run the following from your command line:
 ```
-home$ psql -d vatsandb -h dca -U gpadmin -c 'select max(row)+1, max(col)+1, array[array_agg(red_intensity order by row,col), array_agg(green_intensity order by row,col), array_agg(blue_intensity order by row,col)] from (select * from sample_RGB_image order by row,col)t;' | python plotter.py imageRGB
+home$ psql -d vatsandb -h dca -U gpadmin -c 'select max(row)+1, max(col)+1, array[array_agg(red_intensity order by row,col), array_agg(green_intensity order by row,col), array_agg(blue_intensity order by row,col)] from (select * from sample_RGB_image order by row,col)t;' | python -m 'ppsqlviz.plotter' imageRGB
 ```
 Here is the output ![Sample RGB image](https://raw.githubusercontent.com/ailey/pandas_via_psql/master/plots/YosemiteRGB.jpeg)
 
