@@ -24,6 +24,7 @@ import matplotlib.pyplot as plt
 from StringIO import StringIO
 import fileinput
 import re
+import numpy as np
 
 def scatterMatrix(dframe):
     '''
