@@ -99,7 +99,7 @@ Here is how the scatter matrix can be created on the UCI Wine Quality Dataset
 home$ psql -d vatsandb -h dca -U gpadmin -c 'select * from wine;' | python -m 'ppsqlviz.plotter' scatter
 ```
 Here is the output ![Scatter Matrix of all features from the Wine Quality Dataset]
-(https://raw2.github.com/vatsan/pandas_via_psql/master/plots/scatter_matrix.png)
+(https://raw.githubusercontent.com/vatsan/pandas_via_psql/master/plots/scatter_matrix.png)
 
 
 Hexbin Plots
@@ -112,7 +112,7 @@ You could invoke it from your command line like so:
 home$ psql -d vatsandb -h dca -U gpadmin -c 'select ash, flavanoids from wine;' | python -m 'ppsqlviz.plotter' hexbin
 ```
 Here is the output ![Hexbin plot of Ash vs. Flavanoids from Wine Quality Dataset]
-(https://raw2.github.com/vatsan/pandas_via_psql/master/plots/hexbin.png)
+(https://raw.githubusercontent.com/vatsan/pandas_via_psql/master/plots/hexbin.png)
 
 
 Histogram Plot
@@ -124,7 +124,7 @@ You could invoke it from your command line like so:
 home$ psql -d vatsandb -h dca -U gpadmin -c 'select ash, flavanoids, hue, proline from wine;' | python -m 'ppsqlviz.plotter' hist
 ```
 Here is the output 
-![Histogram Plots of some features from the Wine Quality Dataset](https://raw2.github.com/vatsan/pandas_via_psql/master/plots/histogram.png)
+![Histogram Plots of some features from the Wine Quality Dataset](https://raw.githubusercontent.com/vatsan/pandas_via_psql/master/plots/histogram.png)
 
 Density Plot
 =============
@@ -143,7 +143,7 @@ Box plots are useful in visually getting a feel for the quartile ranges of numer
 ```
 home$ psql -d vatsandb -h dca -U gpadmin -c 'select ash, flavanoids, hue, proline from wine;' | python -m 'ppsqlviz.plotter' box
 ```
-Here is the output ![Box Plot of some features from the Wine Quality Dataset](https://raw2.github.com/vatsan/pandas_via_psql/master/plots/boxplot.png)
+Here is the output ![Box Plot of some features from the Wine Quality Dataset](https://raw.githubusercontent.com/vatsan/pandas_via_psql/master/plots/boxplot.png)
 
 Time Series Plot
 =================
@@ -151,7 +151,7 @@ Again, Pandas has an impressive collection of functions for time series analysis
 ```
 home$ psql -d vatsandb -h dca -U gpadmin -c 'select dt, high, low  from sandp_prices where dt > 1998 order by dt;' | python -m 'ppsqlviz.plotter' tseries
 ```
-Here is the output ![Time Series Plotting of S&P](https://raw2.github.com/vatsan/pandas_via_psql/master/plots/time_series.png)
+Here is the output ![Time Series Plotting of S&P](https://raw.githubusercontent.com/vatsan/pandas_via_psql/master/plots/time_series.png)
 
 Image Rendering
 ===================
