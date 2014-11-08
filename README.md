@@ -153,6 +153,15 @@ home$ psql -d vatsandb -h dca -U gpadmin -c 'select dt, high, low  from sandp_pr
 ```
 Here is the output ![Time Series Plotting of S&P](https://raw.githubusercontent.com/vatsan/pandas_via_psql/master/plots/time_series.png)
 
+Bar Plot
+==================
+Bar plots are typically used to plot binned data, where the data is binned according to user specified bins. This support is provided in pandas-via-psql. The data table is expected to comprise of two array columns of the same length, one each for the x and y axes. You can plot a bar plot by running the following from your command line:
+
+```
+home$ psql -d <dbname> -h <hostname> -U gpadmin -c 'select bin_centers, counts from <tablename> limit 1;' | python -m 'ppsqlviz.plotter' bar 
+```
+The first column always has to be the x axis.
+
 Image Rendering
 ===================
 Pandas also has a great set of tools for viewing images: grayscale or RGB, which can be quite handy when working on image processing or computer vision in SQL. For example, to check a binary mask after thresholding or the weights output by a deep learning algorithm, it is much easier to visualize an image than to interpret a table of intensity values.
