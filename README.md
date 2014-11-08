@@ -167,15 +167,19 @@ Image Rendering
 ===================
 Pandas also has a great set of tools for viewing images: grayscale or RGB, which can be quite handy when working on image processing or computer vision in SQL. For example, to check a binary mask after thresholding or the weights output by a deep learning algorithm, it is much easier to visualize an image than to interpret a table of intensity values.
 To view an image whose intensity values are stored in a table, simply select the height and width of the image (number of rows & columns) followed by a vector of intensity values ordered by row, then column. For example, to view this 270x360 pixel grayscale image, you can run the following from your command line:
+
 ```
 home$ psql -d vatsandb -h dca -U gpadmin -c 'select 270 as rows, 360 as cols, intensity_values from sample_image;' | python -m 'ppsqlviz.plotter' image
 ```
+
 Here is the output ![Sample Grayscale image](https://raw.githubusercontent.com/vatsan/pandas_via_psql/master/plots/YosemiteGrayscale.png)
 
-Similarly, to view an RGB image, provide the image height and width followed by a vector of intensity values ordered by row, then column, then color. To view a sample RGB image you can run the following from your command line:
+Similarly, to view an RGB image, provide the image height and width followed by a vector of intensity values ordered by row, then column, then color. To view a sample RGB image you can run the following from your comman line:
+
 ```
 home$ psql -d vatsandb -h dca -U gpadmin -c 'select max(row)+1, max(col)+1, array[array_agg(red_intensity order by row,col), array_agg(green_intensity order by row,col), array_agg(blue_intensity order by row,col)] from (select * from sample_RGB_image order by row,col)t;' | python -m 'ppsqlviz.plotter' imageRGB
 ```
+
 Here is the output ![Sample RGB image](https://raw.githubusercontent.com/vatsan/pandas_via_psql/master/plots/YosemiteRGB.jpeg)
 
 
