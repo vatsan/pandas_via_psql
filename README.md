@@ -158,9 +158,9 @@ Bar Plot
 Bar plots are typically used to plot binned data, where the data is binned according to user specified bins. This support is provided in pandas-via-psql. The data table is expected to comprise of two array columns of the same length, one each for the x and y axes. You can plot a bar plot by running the following from your command line:
 
 ```
-home$ psql -d <dbname> -h <hostname> -U gpadmin -c 'select bin_centers, counts from <tablename> limit 1;' | python -m 'ppsqlviz.plotter' bar 
+home$ psql -d <dbname> -h <hostname> -U gpadmin -c 'select x*10 as binCenter, random()*100 as count from generate_series(1, 100) x;' | python -m 'ppsqlviz.plotter' bar 
 ```
-The first column always has to be the x axis.
+The first column always has to be the x axis (bin center).
 
 Image Rendering
 ===================

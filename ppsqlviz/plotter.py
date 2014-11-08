@@ -92,18 +92,8 @@ def barPlot(dframe):
        the second column should be the y-coordinates (e.g., counts).
     '''
     x_label, y_label=dframe.columns[0],dframe.columns[1]
-    x = dframe.iloc[0][0]
-    y = dframe.iloc[0][1]
-    x = x.replace('{','')
-    x = x.replace('}','')
-    y = y.replace('{','')
-    y = y.replace('}','')
-    x = x.split(',')
-    y = y.split(',')
-    x = np.array(map(float,x))
-    y = np.array(map(float,y))
-    width = 0.7* (x[1]-x[0])
-    plt.bar(x,y,align='center',width=width)
+    width = (dframe[x_label][1]-dframe[x_label][0])*0.7
+    plt.bar(dframe[x_label],dframe[y_label],align='center',width=width)
     plt.xlabel(x_label)
     plt.ylabel(y_label)
     plt.show() 
