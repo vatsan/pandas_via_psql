@@ -21,7 +21,9 @@ import pandas as pd
 from pandas import DataFrame
 from pandas.tools.plotting import scatter_matrix
 import matplotlib.pyplot as plt
+import matplotlib.cm as cm
 from StringIO import StringIO
+import numpy as np
 import fileinput
 import re
 
@@ -82,6 +84,28 @@ def densityPlot(dframe):
     else:
         hist_plot = dframe.plot(kind='kde',linewidth=3)
     plt.show()
+
+def barPlot(dframe):
+    '''
+       Show Bar Plot. The first column should be the x-coordinates (e.g.,bin centers) and 
+       the second column should be the y-coordinates (e.g., counts).
+    '''
+    x_label, y_label=dframe.columns[0],dframe.columns[1]
+    x = dframe.iloc[0][0]
+    y = dframe.iloc[0][1]
+    x = x.replace('{','')
+    x = x.replace('}','')
+    y = y.replace('{','')
+    y = y.replace('}','')
+    x = x.split(',')
+    y = y.split(',')
+    x = np.array(map(float,x))
+    y = np.array(map(float,y))
+    width = 0.7* (x[1]-x[0])
+    plt.bar(x,y,align='center',width=width)
+    plt.xlabel(x_label)
+    plt.ylabel(y_label)
+    plt.show() 
     
 def imgPlot(dframe):
     '''
@@ -96,7 +120,6 @@ def imgPlot(dframe):
         str_pixels = patch.split(',');
         pixels = np.array(map(float, str_pixels));
         pixels = pixels.reshape(r,c)
-        pixels = np.flipud(pixels)
         plt.imshow(pixels,cmap = cm.Greys_r)
     else:
         print 'Usage: for image plot, 3 columns are expected, with the first two columns being the number of rows and number of columns that make up the image and the third column being the actual image pixelsa as a vector'
@@ -148,6 +171,8 @@ def readTableFromPipe(plot_type):
         densityPlot(dframe)
     elif(plot_type=='hexbin'):
         hexbinPlot(dframe)
+    elif(plot_type=='bar'):
+        barPlot(dframe)
     elif(plot_type=='image'):
     	imgPlot(dframe)
     elif(plot_type=='imageRGB'):
