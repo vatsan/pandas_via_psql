@@ -88,7 +88,7 @@ def find_package_data(
 
 setup(
     name='ppsqlviz',
-    version='1.0',
+    version='1.0.1',
     author='Srivatsan Ramanujam',
     author_email='vatsan.cs@utexas.edu',
     url='http://vatsan.github.io/pandas_via_psql/',
