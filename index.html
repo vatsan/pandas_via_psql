@@ -40,21 +40,27 @@
       </nav>
       <section>
         <h1>
-<a name="psql--pandas-awesomeness" class="anchor" href="#psql--pandas-awesomeness"><span class="octicon octicon-link"></span></a>PSQL + Pandas Awesomeness</h1>
+<a id="github-page" class="anchor" href="#github-page" aria-hidden="true"><span class="octicon octicon-link"></span></a>GitHub Page</h1>
+
+<p>Pandas-via-psql (ppsqlviz) is a command line visualization utility for SQL using Pandas library in Python.
+Please visit the GitHub page <a href="http://vatsan.github.io/pandas_via_psql/">ppsqlviz</a> for a complete tutorial.</p>
+
+<h1>
+<a id="psql--pandas-awesomeness" class="anchor" href="#psql--pandas-awesomeness" aria-hidden="true"><span class="octicon octicon-link"></span></a>PSQL + Pandas Awesomeness</h1>
 
 <p><a href="http://pandas.pydata.org/">Pandas</a> is a popular library in Python that is commonly used for data analysis and it provides Python equivalent of the R dataframe that is fundamental to data analysis. Some engineers and data scientists however are increasingly adopting SQL based libraries for building large scale machine learning algorithms. <a href="http://madlib.net">MADlib</a> is one such library for scalable, parallel, in-database machine learning.</p>
 
 <p>While there are commercial tools to visualize data that reside in databases (example: Tableau), often what's missing in a Big Data scientist's arsenal is a command line tool to be able to quickly visualize the output of a SQL query, without having to switch to a commercial tool or have to use a wrapper to a SQL engine. The pandas_via_psql (ppsqlviz) will show you how simple it is to redirect the output of a SQL query to some boilerplate Pandas's plotting functions, to quickly visualize the data from the command line.</p>
 
 <h1>
-<a name="pre-requsites" class="anchor" href="#pre-requsites"><span class="octicon octicon-link"></span></a>Pre-Requsites</h1>
+<a id="pre-requisites" class="anchor" href="#pre-requisites" aria-hidden="true"><span class="octicon octicon-link"></span></a>Pre-Requisites</h1>
 
 <p>ppsqlviz depends on the Pandas python library. You should also have <a href="http://www.postgresql.org/docs/8.1/static/app-psql.html">PSQL</a> or a similar SQL command line interface to connect to your database and also ensure that you have password-less access to your remote database (set up SSH keys appropriately).</p>
 
 <p>I recommend you download <a href="https://store.continuum.io/cshop/anaconda/">Anaconda Python</a> from the nice folks at <a href="http://continuum.io/">Continuum Analytics</a>. It's got most of the essential Python scientific computing libraries pre-packaged and with <a href="http://bokeh.pydata.org/">conda</a> you can save a lot of pain in installing python libraries. It also makes creating and managing virtual environments a piece of cake!</p>
 
 <h1>
-<a name="installation" class="anchor" href="#installation"><span class="octicon octicon-link"></span></a>Installation</h1>
+<a id="installation" class="anchor" href="#installation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Installation</h1>
 
 <p>You can install install ppsqlviz through pip</p>
 
@@ -64,7 +70,7 @@
 <p>This will install the dependent library (Pandas) if you don't already have that. I strongly encourage you use Anaconda Python to avoid going down the rabbit hole of PyData stack dependency nightmares.</p>
 
 <h1>
-<a name="datasets-used" class="anchor" href="#datasets-used"><span class="octicon octicon-link"></span></a>Datasets Used</h1>
+<a id="datasets-used" class="anchor" href="#datasets-used" aria-hidden="true"><span class="octicon octicon-link"></span></a>Datasets Used</h1>
 
 <p>For this demo, I'm using two publicly available datasets. </p>
 
@@ -123,13 +129,13 @@
 </code></pre>
 
 <h1>
-<a name="usage" class="anchor" href="#usage"><span class="octicon octicon-link"></span></a>Usage</h1>
+<a id="usage" class="anchor" href="#usage" aria-hidden="true"><span class="octicon octicon-link"></span></a>Usage</h1>
 
 <p>Invoke Pandas plotting functions by piping in the output from a psql query.
 You can re-use this boiler-plate code for Scatter Plots, Box Plots, Histograms and Time Series Plots on your tables.</p>
 
 <h1>
-<a name="scatter-matrix" class="anchor" href="#scatter-matrix"><span class="octicon octicon-link"></span></a>Scatter Matrix</h1>
+<a id="scatter-matrix" class="anchor" href="#scatter-matrix" aria-hidden="true"><span class="octicon octicon-link"></span></a>Scatter Matrix</h1>
 
 <p>This is pretty useful when you are interested in analyzing the correlation between a bunch of features in a dataset, particularly in their correlation with the target attribute/label. You might then perform feature selection based on a visual output of the correlations.</p>
 
@@ -138,10 +144,10 @@ You can re-use this boiler-plate code for Scatter Plots, Box Plots, Histograms a
 <pre><code>home$ psql -d vatsandb -h dca -U gpadmin -c 'select * from wine;' | python -m 'ppsqlviz.plotter' scatter
 </code></pre>
 
-<p>Here is the output <img src="https://raw2.github.com/vatsan/pandas_via_psql/master/plots/scatter_matrix.png" alt="Scatter Matrix of all features from the Wine Quality Dataset"></p>
+<p>Here is the output <img src="https://raw.githubusercontent.com/vatsan/pandas_via_psql/master/plots/scatter_matrix.png" alt="Scatter Matrix of all features from the Wine Quality Dataset"></p>
 
 <h1>
-<a name="hexbin-plots" class="anchor" href="#hexbin-plots"><span class="octicon octicon-link"></span></a>Hexbin Plots</h1>
+<a id="hexbin-plots" class="anchor" href="#hexbin-plots" aria-hidden="true"><span class="octicon octicon-link"></span></a>Hexbin Plots</h1>
 
 <p>Scatter plots sometimes may not reveal the underlying relationship between the dimensions when multiple points overlap.
 For this reason, it is better to look at a 2-d histogram or a hex-bin plot. We can tap into <code>matplotlib's</code> hexbin plot for this.</p>
@@ -151,10 +157,10 @@ For this reason, it is better to look at a 2-d histogram or a hex-bin plot. We c
 <pre><code>home$ psql -d vatsandb -h dca -U gpadmin -c 'select ash, flavanoids from wine;' | python -m 'ppsqlviz.plotter' hexbin
 </code></pre>
 
-<p>Here is the output <img src="https://raw2.github.com/vatsan/pandas_via_psql/master/plots/hexbin.png" alt="Hexbin plot of Ash vs. Flavanoids from Wine Quality Dataset"></p>
+<p>Here is the output <img src="https://raw.githubusercontent.com/vatsan/pandas_via_psql/master/plots/hexbin.png" alt="Hexbin plot of Ash vs. Flavanoids from Wine Quality Dataset"></p>
 
 <h1>
-<a name="histogram-plot" class="anchor" href="#histogram-plot"><span class="octicon octicon-link"></span></a>Histogram Plot</h1>
+<a id="histogram-plot" class="anchor" href="#histogram-plot" aria-hidden="true"><span class="octicon octicon-link"></span></a>Histogram Plot</h1>
 
 <p>To get a quick glimpse of the distribution of the data in your columns, a histogram plot of all columns is quite useful.</p>
 
@@ -164,10 +170,10 @@ For this reason, it is better to look at a 2-d histogram or a hex-bin plot. We c
 </code></pre>
 
 <p>Here is the output 
-<img src="https://raw2.github.com/vatsan/pandas_via_psql/master/plots/histogram.png" alt="Histogram Plots of some features from the Wine Quality Dataset"></p>
+<img src="https://raw.githubusercontent.com/vatsan/pandas_via_psql/master/plots/histogram.png" alt="Histogram Plots of some features from the Wine Quality Dataset"></p>
 
 <h1>
-<a name="density-plot" class="anchor" href="#density-plot"><span class="octicon octicon-link"></span></a>Density Plot</h1>
+<a id="density-plot" class="anchor" href="#density-plot" aria-hidden="true"><span class="octicon octicon-link"></span></a>Density Plot</h1>
 
 <p>In place of binning your data, you might consider plotting the density directly. </p>
 
@@ -179,27 +185,38 @@ For this reason, it is better to look at a 2-d histogram or a hex-bin plot. We c
 <p>Here is the output <img src="https://raw.github.com/vatsan/pandas_via_psql/master/plots/density.png" alt="Density Plots of some features from the Wine Quality Dataset"></p>
 
 <h1>
-<a name="box-plot" class="anchor" href="#box-plot"><span class="octicon octicon-link"></span></a>Box Plot</h1>
+<a id="box-plot" class="anchor" href="#box-plot" aria-hidden="true"><span class="octicon octicon-link"></span></a>Box Plot</h1>
 
 <p>Box plots are useful in visually getting a feel for the quartile ranges of numerical columns in your dataset. You could invoke it from your command line like so:</p>
 
 <pre><code>home$ psql -d vatsandb -h dca -U gpadmin -c 'select ash, flavanoids, hue, proline from wine;' | python -m 'ppsqlviz.plotter' box
 </code></pre>
 
-<p>Here is the output <img src="https://raw2.github.com/vatsan/pandas_via_psql/master/plots/boxplot.png" alt="Box Plot of some features from the Wine Quality Dataset"></p>
+<p>Here is the output <img src="https://raw.githubusercontent.com/vatsan/pandas_via_psql/master/plots/boxplot.png" alt="Box Plot of some features from the Wine Quality Dataset"></p>
 
 <h1>
-<a name="time-series-plot" class="anchor" href="#time-series-plot"><span class="octicon octicon-link"></span></a>Time Series Plot</h1>
+<a id="time-series-plot" class="anchor" href="#time-series-plot" aria-hidden="true"><span class="octicon octicon-link"></span></a>Time Series Plot</h1>
 
 <p>Again, Pandas has an impressive collection of functions for time series analysis but to quickly visualize a time series, you can run the following from your command line:</p>
 
 <pre><code>home$ psql -d vatsandb -h dca -U gpadmin -c 'select dt, high, low  from sandp_prices where dt &gt; 1998 order by dt;' | python -m 'ppsqlviz.plotter' tseries
 </code></pre>
 
-<p>Here is the output <img src="https://raw2.github.com/vatsan/pandas_via_psql/master/plots/time_series.png" alt="Time Series Plotting of S&amp;P"></p>
+<p>Here is the output <img src="https://raw.githubusercontent.com/vatsan/pandas_via_psql/master/plots/time_series.png" alt="Time Series Plotting of S&amp;P"></p>
 
 <h1>
-<a name="image-rendering" class="anchor" href="#image-rendering"><span class="octicon octicon-link"></span></a>Image Rendering</h1>
+<a id="bar-plot" class="anchor" href="#bar-plot" aria-hidden="true"><span class="octicon octicon-link"></span></a>Bar Plot</h1>
+
+<p>Bar plots are typically used to plot binned data, where the data is binned according to user specified bins. This support is provided in pandas-via-psql. The data table is expected to comprise of two array columns of the same length, one each for the x and y axes. You can plot a bar plot by running the following from your command line:</p>
+
+<pre><code>home$ psql -d &lt;dbname&gt; -h &lt;hostname&gt; -U gpadmin -c 'select x*10 as binCenter, random()*100 as count from generate_series(1, 100) x;' | python -m 'ppsqlviz.plotter' bar 
+</code></pre>
+
+<p>The first column always has to be the x axis (bin center).
+Here's the output <img src="https://raw.githubusercontent.com/vatsan/pandas_via_psql/master/plots/barplot.png" alt="Bar Plot"></p>
+
+<h1>
+<a id="image-rendering" class="anchor" href="#image-rendering" aria-hidden="true"><span class="octicon octicon-link"></span></a>Image Rendering</h1>
 
 <p>Pandas also has a great set of tools for viewing images: grayscale or RGB, which can be quite handy when working on image processing or computer vision in SQL. For example, to check a binary mask after thresholding or the weights output by a deep learning algorithm, it is much easier to visualize an image than to interpret a table of intensity values.
 To view an image whose intensity values are stored in a table, simply select the height and width of the image (number of rows &amp; columns) followed by a vector of intensity values ordered by row, then column. For example, to view this 270x360 pixel grayscale image, you can run the following from your command line:</p>
@@ -207,22 +224,22 @@ To view an image whose intensity values are stored in a table, simply select the
 <pre><code>home$ psql -d vatsandb -h dca -U gpadmin -c 'select 270 as rows, 360 as cols, intensity_values from sample_image;' | python -m 'ppsqlviz.plotter' image
 </code></pre>
 
-<p>Here is the output <img src="https://raw.githubusercontent.com/ailey/pandas_via_psql/master/plots/YosemiteGrayscale.jpg" alt="Sample Grayscale image"></p>
+<p>Here is the output <img src="https://raw.githubusercontent.com/vatsan/pandas_via_psql/master/plots/YosemiteGrayscale.png" alt="Sample Grayscale image"></p>
 
-<p>Similarly, to view an RGB image, provide the image height and width followed by a vector of intensity values ordered by row, then column, then color. To view a sample RGB image you can run the following from your command line:</p>
+<p>Similarly, to view an RGB image, provide the image height and width followed by a vector of intensity values ordered by row, then column, then color. To view a sample RGB image you can run the following from your comman line:</p>
 
 <pre><code>home$ psql -d vatsandb -h dca -U gpadmin -c 'select max(row)+1, max(col)+1, array[array_agg(red_intensity order by row,col), array_agg(green_intensity order by row,col), array_agg(blue_intensity order by row,col)] from (select * from sample_RGB_image order by row,col)t;' | python -m 'ppsqlviz.plotter' imageRGB
 </code></pre>
 
-<p>Here is the output <img src="https://raw.githubusercontent.com/ailey/pandas_via_psql/master/plots/YosemiteRGB.jpeg" alt="Sample RGB image"></p>
+<p>Here is the output <img src="https://raw.githubusercontent.com/vatsan/pandas_via_psql/master/plots/YosemiteRGB.jpeg" alt="Sample RGB image"></p>
 
 <h1>
-<a name="author" class="anchor" href="#author"><span class="octicon octicon-link"></span></a>Author</h1>
+<a id="author" class="anchor" href="#author" aria-hidden="true"><span class="octicon octicon-link"></span></a>Author</h1>
 
 <p>Please email questions and feedback to <a href="https://github.com/vatsan/">Srivatsan Ramanujam</a> at <a href="mailto:vatsan.cs@utexas.edu">vatsan.cs@utexas.edu</a></p>
 
 <h1>
-<a name="contributors" class="anchor" href="#contributors"><span class="octicon octicon-link"></span></a>Contributors</h1>
+<a id="contributors" class="anchor" href="#contributors" aria-hidden="true"><span class="octicon octicon-link"></span></a>Contributors</h1>
 
 <p>Thanks to <a href="https://github.com/ailey">Ailey Crow</a> and <a href="https://github.com/gautamsm">Gautam Muralidhar</a> for their contributions.</p>
       </section>
