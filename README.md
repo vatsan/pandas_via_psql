@@ -161,6 +161,7 @@ Bar plots are typically used to plot binned data, where the data is binned accor
 home$ psql -d <dbname> -h <hostname> -U gpadmin -c 'select x*10 as binCenter, random()*100 as count from generate_series(1, 100) x;' | python -m 'ppsqlviz.plotter' bar 
 ```
 The first column always has to be the x axis (bin center).
+Here's the output ![Bar Plot](https://raw.githubusercontent.com/vatsan/pandas_via_psql/master/plots/barplot.png)
 
 Image Rendering
 ===================
