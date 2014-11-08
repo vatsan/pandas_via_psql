@@ -11,7 +11,7 @@ PSQL + Pandas Awesomeness
 
 While there are commercial tools to visualize data that reside in databases (example: Tableau), often what's missing in a Big Data scientist's arsenal is a command line tool to be able to quickly visualize the output of a SQL query, without having to switch to a commercial tool or have to use a wrapper to a SQL engine. The pandas_via_psql (ppsqlviz) will show you how simple it is to redirect the output of a SQL query to some boilerplate Pandas's plotting functions, to quickly visualize the data from the command line.
 
-Pre-Requsites
+Pre-Requisites
 ==============
 
 ppsqlviz depends on the Pandas python library. You should also have [PSQL](http://www.postgresql.org/docs/8.1/static/app-psql.html) or a similar SQL command line interface to connect to your database and also ensure that you have password-less access to your remote database (set up SSH keys appropriately).
